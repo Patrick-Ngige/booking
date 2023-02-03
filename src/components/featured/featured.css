@@ -1,0 +1,43 @@
+.featured{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.featuredImg{
+    width: 100%;
+    object-fit: cover;
+}
+
+.featuredItem{
+    position: relative;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 215px;
+}
+
+.featuredImg{
+    width: 100%;
+    object-fit: cover;
+}
+
+.featuredTitles{
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+    /* text-shadow: black; */
+}
+
+.featuredTitles>h1{
+    margin-bottom: -20px;
+    text-shadow: rgb(20, 23, 23) 2px 1px ;
+}
+
+.featuredTitles>h2{
+    text-shadow: black 2px 1px;
+}

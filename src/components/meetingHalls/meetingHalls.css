@@ -1,0 +1,44 @@
+.mh{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.mhItem{
+    flex: 1;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.mhImg{
+    width: 100%;
+}
+
+.mhName{
+    font-weight: bold;
+}
+
+.mhCapacity{
+    font-weight: 300;
+}
+
+.mhPrice{
+    font-weight: 600;
+}
+
+.mhRating>button{
+    background-color: #003580;
+    color: aliceblue;
+    border: none;
+    padding: 3px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.mhRating>span{
+    font-style: 14px;
+}

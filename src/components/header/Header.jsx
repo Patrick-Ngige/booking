@@ -14,7 +14,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 
-const Header = (type) => {
+const Header = ({type}) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -41,7 +41,7 @@ const Header = (type) => {
 
   return (
     <div className="header">
-      <div className="headerContainer">
+      <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
@@ -65,7 +65,7 @@ const Header = (type) => {
           <h1 className="headerTitle">Pink Hues of Luxury </h1>
         <p className="headerDesc">
           Explore the city of Nairobi in style and comfort with a stay at the
-          luxury five-star hotel, Villa Rosa Kempinski Nairobi.
+          luxury 5-Star hotel Nairobi.
         </p>
         <button className="headerBtn">Sign in / Register</button>
         <div className="headerSearch">

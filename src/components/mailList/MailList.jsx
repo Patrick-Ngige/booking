@@ -9,7 +9,7 @@ const MailList = () => {
             <input type="text" placeholder='enter your email '/>
             <button>Subscribe</button>
         </div>
-        <div className="cw">Copywrite </div>
+        <div className="cw">Copywrite © 2023 5-Star booking. </div>
 </div>
   );
 }

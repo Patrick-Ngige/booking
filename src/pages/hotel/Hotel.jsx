@@ -3,49 +3,80 @@ import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import MailList from "../../components/mailList/MailList.jsx"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 const Hotel = () => {
+
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [open, setOpen] = useState(false);
   const photos = [
     {
       src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
     },
     {
-      src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
+      src: "https://cdn.pixabay.com/photo/2016/03/02/20/41/hotel-1233020__480.jpg"
     },
     {
-      src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
+      src: "https://cdn.pixabay.com/photo/2016/11/14/02/28/apartment-1822409__480.jpg"
     },
     {
-      src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
+      src: "https://cdn.pixabay.com/photo/2018/11/09/13/01/furniture-3804541__480.jpg"
     },
     {
-      src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
+      src: "https://cdn.pixabay.com/photo/2020/01/15/18/01/room-4768551__480.jpg"
     },
     {
-      src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
+      src: "https://cdn.pixabay.com/photo/2022/07/22/09/09/sofa-7337709__480.jpg"
     },
     {
-      src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
+      src: "https://cdn.pixabay.com/photo/2018/01/28/10/16/within-3113211__480.jpg"
     },
     {
-      src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
+      src: "https://cdn.pixabay.com/photo/2017/01/14/12/48/hotel-1979406__480.jpg"
     },
     {
-      src: "https://cdn.pixabay.com/photo/2015/09/07/19/12/hotel-928937__480.jpg"
+      src: "https://cdn.pixabay.com/photo/2016/06/10/01/05/hotel-room-1447201__480.jpg"
     }
   ];
+
+const handleOpen = (i) =>{
+  setSlideIndex(i);
+  setOpen(true);
+};
+
+const handleMove =(direction) => {
+  let newSlideNumber;
+
+  if(direction==="l"){
+    newSlideNumber = slideIndex === 0 ? 5 : slideIndex-1
+  }else{
+    newSlideNumber = slideIndex === 5 ? 0 : slideIndex+1
+
+  }
+  setSlideIndex(newSlideNumber)
+}
+
+
   return (
     <div>
       <Navbar/>
     <Header type="list"/>
     <div className="hotelContainer">
+      {open && <div className="slider">
+          <FontAwesomeIcon icon={faCircleXmark} className="close" onClick={()=>setOpen(false)}/>
+          <FontAwesomeIcon icon={faCircleArrowLeft} className="arrow" onClick={()=>handleMove("l")} />
+          <div className="sliderWrapper">
+            <img src={photos[slideIndex].src} alt="" className='sliderImg'/>
+          </div>
+          <FontAwesomeIcon icon={faCircleArrowRight} className="arrow" onClick={()=>handleMove("r")} />
+      </div>}
       <div className="hotelWrapper">
         <button className="bookNow">Reserve or Book Now!</button>
         <h1 className="hotelTitle">Grand Hotel</h1>
         <div className="hotelAddress">
           <FontAwesomeIcon icon={faLocationDot}/> 
-          <span className="sLocation">Elton St 125 New York</span>          
+          <span className>Elton St 125 New York</span>          
           <span className="hotelDistance">
             Excellent location - 500m from center.
           </span>
@@ -53,9 +84,9 @@ const Hotel = () => {
             Book a stay over $114 at this property and get a free airport taxi.
           </span>
           <div className="hotelImages">
-            {photos.map(photo=>(
+            {photos.map((photo,i)=>(
               <div className="hotelImgWrapper">
-                <img src={photo.src} alt="" className='hotelImg' />
+                <img onClick={()=>handleOpen(i)} src={photo.src} alt="" className='hotelImg' />
               </div>
             ))}
           </div>
